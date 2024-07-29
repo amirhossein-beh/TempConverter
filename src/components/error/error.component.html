@@ -1,4 +1,6 @@
-<div class="bg-red-600 absolute top-8 right-8 px-10 flex text-white py-3 rounded-md" *ngIf="title">
-  <div>{{title}}</div>
-  <i class="ri-close-circle-fill mx-2 cursor-pointer" (click)="close()"></i>
-</div>
+
+  <div *ngFor="let error of errors; index as i" class="bg-red-600 px-10 flex text-white py-3 rounded-md my-2">
+    {{error}}
+    <i class="ri-close-circle-fill mx-2 cursor-pointer"></i>
+  </div>
+

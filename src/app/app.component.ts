@@ -12,11 +12,9 @@ import {ErrorComponent} from "../components/error/error.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements AfterViewInit{
-  value = 10;
-  unitFirst:string | undefined
-  unitSecond:string | undefined
-  result:number | null = null
-  TitelError:string | undefined
+  value:number = 10;
+  result:number = 0
+  Errormessage:string[] = [];
 
   @ViewChild('selectElement1') selectElement1: any;
   @ViewChild('selectElement2') selectElement2: any;
@@ -40,7 +38,7 @@ export class AppComponent implements AfterViewInit{
         this.result = (9 / 5) * this.value + 491.67;
       }
       else {
-        this.TitelError = `Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑???? `
+        this.addError(`Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑????`)
       }
     }
 
@@ -55,7 +53,7 @@ export class AppComponent implements AfterViewInit{
         this.result = this.value + 459.67;
       }
       else {
-        this.TitelError = `Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑???? `
+        this.addError(`Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑????`)
       }
     }
 
@@ -70,7 +68,7 @@ export class AppComponent implements AfterViewInit{
         this.result = (9 / 5) * this.value;
       }
       else {
-        this.TitelError = `Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑???? `
+        this.addError(`Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑????`)
       }
     }
 
@@ -85,8 +83,25 @@ export class AppComponent implements AfterViewInit{
         this.result = (5 / 9) * this.value;
       }
       else {
-        this.TitelError = `Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑???? `
+        this.addError(`Why do you want to convert ${selectValue1.split(' ')[0]} to ${selectValue2.split(' ')[0]}😑????`)
       }
+    }
+  }
+  addError(message: string) {
+    const error =  message ;
+    this.Errormessage.push(error)
+
+
+    setTimeout(() => {
+      this.removeError(error);
+    }, 3000);
+  }
+
+
+  removeError(error:string) {
+    const index = this.Errormessage.indexOf(error);
+    if (index !== -1) {
+      this.Errormessage.splice(index, 1);
     }
   }
 }

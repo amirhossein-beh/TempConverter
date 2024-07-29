@@ -1,31 +1,35 @@
-<div class="h-screen bg-sky-950 flex flex-col justify-evenly items-center">
-  <div class="card bg-sky-800 p-4 rounded-md m-4 sm:w-3/5 w-4/5">
-    <div class="border-2 rounded-md border-opacity-30 border-white h-full w-full flex flex-col justify-between px-8 py-6">
-      <select class="p-2 rounded m-2 bg-slate-800 text-white outline-0" #selectElement1>
-        <option>Celsius C°</option>
-        <option>Fahrenheit F°</option>
-        <option> Kelvin k</option>
-        <option> Rankine R</option>
-      </select>
-      <div class="p-2 rounded m-2 bg-slate-800 text-white flex justify-between">
-        <input type="number" class="outline-0 rounded bg-slate-800 text-white w-full" [(ngModel)]="value">
-        <i class="ri-temp-hot-line"></i>
-      </div>
-      <span class="text-white">to</span>
-      <select class="p-2 rounded m-2 bg-slate-800 text-white outline-0" #selectElement2>
-        <option>Celsius C°</option>
-        <option>Fahrenheit F°</option>
-        <option> Kelvin k</option>
-        <option> Rankine R</option>
-      </select>
-      <div class="p-2 rounded m-2 bg-slate-800 text-white flex justify-between">
-        <input type="number" class="outline-0 rounded bg-slate-800 text-white w-full" readonly [(ngModel)]="result">
-        <i class="ri-temp-hot-line"></i>
-      </div>
+<div class="relative">
+  <div class="h-screen bg-sky-950 flex flex-col justify-evenly items-center">
+    <div class="card bg-sky-800 p-4 rounded-md m-4 sm:w-3/5 w-4/5">
+      <div class="border-2 rounded-md border-opacity-30 border-white h-full w-full flex flex-col justify-between px-8 py-6">
+        <select class="p-2 rounded m-2 bg-slate-800 text-white outline-0" #selectElement1>
+          <option>Celsius C°</option>
+          <option>Fahrenheit F°</option>
+          <option> Kelvin k</option>
+          <option> Rankine R</option>
+        </select>
+        <div class="p-2 rounded m-2 bg-slate-800 text-white flex justify-between">
+          <input type="number" class="outline-0 rounded bg-slate-800 text-white w-full" [(ngModel)]="value">
+          <i class="ri-temp-hot-line"></i>
+        </div>
+        <span class="text-white">to</span>
+        <select class="p-2 rounded m-2 bg-slate-800 text-white outline-0" #selectElement2>
+          <option>Celsius C°</option>
+          <option>Fahrenheit F°</option>
+          <option> Kelvin k</option>
+          <option> Rankine R</option>
+        </select>
+        <div class="p-2 rounded m-2 bg-slate-800 text-white flex justify-between">
+          <input type="number" class="outline-0 rounded bg-slate-800 text-white w-full" readonly [(ngModel)]="result">
+          <i class="ri-temp-hot-line"></i>
+        </div>
 
-      <app-button [class]="'bg-teal-600 px-5 py-2 rounded-md text-white self-end w-full mt-6 sm:text-xl hover:bg-teal-400 active:scale-95 transition-all'" [value]="'calculate'" (click)="calculate()" [appendedIcon]="'ri-calculator-line'"></app-button>
+        <app-button [class]="'bg-teal-600 px-5 py-2 rounded-md text-white self-end w-full mt-6 sm:text-xl hover:bg-teal-400 active:scale-95 transition-all'" [value]="'calculate'" (click)="calculate()" [appendedIcon]="'ri-calculator-line'"></app-button>
+      </div>
     </div>
   </div>
-</div>
 
-<app-error [title]="TitelError"></app-error>
+  <div class="absolute top-0 right-0 p-5 flex flex-col">
+    <app-error [errors]="Errormessage"></app-error>
+  </div>
+</div>
